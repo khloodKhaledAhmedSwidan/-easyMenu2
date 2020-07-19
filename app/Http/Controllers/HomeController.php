@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Contact;
 use App\Cart;
 use App\Coupon;
+use App\SellerCode;
 use App\Meal;
 use App\Order;
 use App\Package;
@@ -415,7 +416,7 @@ class HomeController extends Controller
 //       $branch->where('id',$branch->id)->branchOrders()->update([
 //           'branch_id' => $branch->id,
 //       ]);
-       $order->where('id',$order->id)->update([ 'branch_id' => $branch->id,]);
+        $order->where('id',$order->id)->update([ 'branch_id' => $branch->id,]);
         flash("تم تحويل الطلب بنجاح");
         return redirect()->back();
 
@@ -424,33 +425,76 @@ class HomeController extends Controller
         $user = User::find($user);
         return view('pay-by-bank',compact('user'));
     }
+
     public function payByBank(Request $request,$id){
-$coupon = Coupon::where('name',$request->coupon)->first();
-//dd($coupon->id);
-$user = User::find($id);
-//dd($user);
+        // dd($request->all());
+        $this->validate($request, [
+            'coupon'      => 'sometimes',
+            'seller_code' => 'sometimes',
+        ]);
+        
+        $user = User::find($id);
+
+        if($request->coupon != null){
+            $coupon = Coupon::where('name',$request->coupon)->first();
+            if($coupon){
+                $subscription = $user->subscriptions()->latest()->first();
+                // dd($subscription);
+                $package =  $subscription->package;
+                $discount = ($package->price * $coupon->percentage)/100;
+                $newPrice = $package->price - $discount ;
+                $subscription->update([
+                        'price' => $newPrice,
+                        'discount_code_id' => $coupon->id,
+                        
+                    ]);
+
+
+                    if($request->seller_code != null){
+                        $seller_code = SellerCode::where('name',$request->seller_code)->first();
+                        // dd($seller_code);
+                        if($seller_code){
+                            $subscription->update([
+                                'seller_code_id' => $seller_code->id,
+                                ]);
+                        }
+                    }
+
+                flash("سعر الباقة بعد الخصم".$newPrice);
+                //redirect to payment page
+                return  view('payment');
+            }else{
+                flash("تاكد من كتابه كود الخصم بشكل صحيح")->error();
+                return back();
+            }
+        }
+
+        
+
+
+
+
+        
+        
+        //dd($user);
         if($coupon){
-$subscription = $user->subscriptions()->where('user_id',$user->id)->first();
-//$oldPrice = $subscription->price;
-$package =  Package::where('id',$subscription->package_id)->first();
-$discount = ($package->price * $coupon->percentage)/100;
-$newPrice = $package->price - $discount ;
-//dd($newPrice);
-$user->subscriptions()->where('user_id',$user->id)->update(
-    [
-        'price' => $newPrice,
-        'discount_code_id' => $coupon->id,
-    ]
-);
+            $subscription = $user->subscriptions()->where('user_id',$user->id)->latest();
+            //$oldPrice = $subscription->price;
+            $package =  Package::where('id',$subscription->package_id)->first();
+            $discount = ($package->price * $coupon->percentage)/100;
+            $newPrice = $package->price - $discount ;
+            //dd($newPrice);
+            $user->subscriptions()->where('user_id',$user->id)->update([
+                    'price' => $newPrice,
+                    'discount_code_id' => $coupon->id,
+                ]);
 
             flash("سعر الباقة بعد الخصم".$newPrice);
-//    return redirect()->route('pay.bankPage',$user->id);
+            //    return redirect()->route('pay.bankPage',$user->id);
             return  back();
 
-}else{
-//    return redirect()->route('pay.bankPage',$user->id);
+        }else{
             flash("تاكد من كتابه كود الاحاله");
-//            return response()->json();
-}
+        }
     }
 }

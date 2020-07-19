@@ -52,10 +52,11 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-//        dd('kk');
+        // dd($data);
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'name_ar' => ['required', 'string', 'max:255'],
+            'package_id' => ['required'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'phone_number' => ['required', 'max:20', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
@@ -71,11 +72,12 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-$package =$data['package_id'];
+        $package =$data['package_id'];
         $packageDuration =Package::find($package)->duration;
         $now =Carbon::now('m');
         $end=   $now->addMonths($packageDuration);
-    $user =  User::create([
+    
+        $user =  User::create([
             'name' => $data['name'],
             'name_ar' => $data['name_ar'],
             'email' => $data['email'],
@@ -87,13 +89,13 @@ $package =$data['package_id'];
         $user->subscriptions()->create(
             [
                 'package_id' => $package,
-                'status' =>1,
+                'status' =>0,
                 'end_at' => $end,
             ]);
 
-//        return $user;
-        flash('تم التسجيل بنجاح');
-        return redirect()->route('pay.bankPage',$user->id);
+        return $user;
+        // flash('تم التسجيل بنجاح');
+        // return redirect()->route('pay.bankPage',$user->id);
 
     }
 }

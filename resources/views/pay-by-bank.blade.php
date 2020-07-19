@@ -73,15 +73,27 @@
 
 
                                     <div class="form-group">
-                                        <label class="control-label"> اكتب الخصم ان وجد قبل الدفع</label>
+                                        <label class="control-label"> اكتب كود الاحالة ان وجد </label>
+                                        <input type="text" id="seller_code" name="seller_code" class="form-control"
+                                            placeholder=" اكتب الكود إن وجد" />
+                                        @if ($errors->has('seller_code'))
+                                            <span class="help-block">
+                                                <strong style="color: red;">{{ $errors->first('seller_code') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label"> اكتب كود الخصم ان وجد قبل الدفع</label>
                                         <input type="text" id="coupon" name="coupon" class="form-control"
-                                               placeholder=" اكتب الخصم إن وجد" />
+                                            placeholder=" اكتب الخصم إن وجد" />
                                         @if ($errors->has('coupon'))
                                             <span class="help-block">
                                                 <strong style="color: red;">{{ $errors->first('coupon') }}</strong>
                                             </span>
                                         @endif
                                     </div>
+
                                     <div class="form-actions">
                                         <input type="submit" id="checkCoupon" value="ارسال" class="btn btn-info">
 
@@ -106,14 +118,47 @@
 </div>
 
 <script type="text/javascript" src="{{asset('js/app.js')}}"></script>
-<script type="text/javascript">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+ {{-- <script type="text/javascript">
+
+    function test(){
+        $id = {{$user->id}};
+        var coupon = $('#coupon').val();
+
+        $.ajax({
+                url: '/pay-by-bank/'+$id,
+                // url: $(form).attr('action'),
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    coupon:coupon,
+
+                },
+                type: "POST",
+                dataType: 'json',
+                success:function (data) {
+                    console.log(data);
+                    
+                }
+            })
+    }
+    
     $(document).ready(function () {
+
+        
+
+
+
+
+
+
         $('#formForPay').hide();
 
         $('#checkCoupon').on('click',function () {
             var form = $('#ajax-contact');
             var coupon = $('#coupon').val();
-
+            alert('here');
             $.ajax({
                 url:"{{route('pay.bank',$user->id)}}",
                 url: $(form).attr('action'),
@@ -143,7 +188,7 @@
 
 
 
-</script>
+</script> --}}
 
 </body>
 

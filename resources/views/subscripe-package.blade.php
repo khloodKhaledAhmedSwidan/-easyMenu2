@@ -79,6 +79,7 @@
                                             </span>
                                                 @endif
                                             </div>
+                                            
                                             <div class="form-group">
                                                 <label class="control-label"> اكتب كود الاحاله </label>
                                                 <input type="text" id="sellerCode" name="sellerCode" class="form-control"
@@ -143,6 +144,7 @@
 <script type="text/javascript" src="{{asset('js/app.js')}}"></script>
 <script type="text/javascript">
     $(document).ready(function () {
+        // alert
         $('#formForPay').hide();
 
 $('#checkCoupon').on('click',function () {

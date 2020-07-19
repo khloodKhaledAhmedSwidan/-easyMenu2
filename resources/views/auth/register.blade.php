@@ -210,7 +210,7 @@
             <div class="form-group">
                 <input autocomplete="off"
                     class="form-control ng-untouched {{ $errors->has('name') ? ' is-invalid' : '' }} ng-pristine ng-invalid"
-                    id="userName" maxlength="50" name="name_ar" type="text" placeholder=" الاسم بالعربية" />
+            id="userName" maxlength="50" name="name_ar" type="text" placeholder=" الاسم بالعربية" value="{{old('name_ar')}}"/>
                 @error('name_ar')
                 <span class="invalid-feedback" role="alert">
                     <strong style="color:red;">{{ $message }}</strong>
@@ -223,7 +223,7 @@
             <div class="form-group">
                 <input autocomplete="off"
                     class="form-control ng-untouched {{ $errors->has('name') ? ' is-invalid' : '' }} ng-pristine ng-invalid"
-                    id="userName" maxlength="50" name="name" type="text" placeholder=" الاسم بالانجليزية" />
+                    id="userName" maxlength="50" name="name" type="text" placeholder=" الاسم بالانجليزية"  value="{{old('name')}}"/>
                 @error('name')
                 <span class="invalid-feedback" role="alert">
                     <strong style="color:red;">{{ $message }}</strong>
@@ -236,7 +236,7 @@
             <div class="form-group">
                 <input autocomplete="off"
                     class="form-control ng-untouched {{ $errors->has('email') ? ' is-invalid' : '' }} ng-pristine ng-invalid"
-                    id="userName" maxlength="50" name="phone_number" type="number" placeholder=" رقم الهاتف " />
+                    id="userName" maxlength="50" name="phone_number" type="number" placeholder=" رقم الهاتف " value="{{old('phone_number')}}" />
                 @error('phone_number')
                 <span class="invalid-feedback" role="alert">
                     <strong style="color:red;">{{ $message }}</strong>
@@ -249,7 +249,7 @@
             <div class="form-group">
                 <input autocomplete="off"
                     class="form-control ng-untouched {{ $errors->has('email') ? ' is-invalid' : '' }} ng-pristine ng-invalid"
-                    id="userName" maxlength="50" name="email" type="text" placeholder=" الايميل" />
+                    id="userName" maxlength="50" name="email" type="text" placeholder=" الايميل" value="{{old('email')}}" />
                 @error('email')
                 <span class="invalid-feedback" role="alert">
                     <strong style="color:red;">{{ $message }}</strong>
@@ -262,7 +262,7 @@
             <div class="form-group">
                 <input autocomplete="new-password"
                     class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }} ng-untouched ng-pristine ng-invalid"
-                    maxlength="50" name="password" required="" type="password" placeholder=" كلمة السر" />
+                    maxlength="50" name="password" required="" type="password" placeholder=" كلمة السر"  />
                 @error('password')
                 <span class="invalid-feedback" role="alert">
                     <strong style="color:red;">{{ $message }}</strong>
@@ -275,7 +275,7 @@
             <div class="form-group">
                 <input autocomplete="new-password"
                     class="form-control ng-untouched ng-pristine ng-invalid {{ $errors->has('password') ? ' is-invalid' : '' }}"
-                    maxlength="50" name="password_confirmation" required="" type="password"
+                    maxlength="50" name="password_confirmation" required="" type="password"  
                     placeholder="تأكيد كلمة السر " />
                 @error('password')
                 <span class="invalid-feedback" role="alert">
@@ -286,16 +286,22 @@
             <br />
             <div class="form-group">
 
-                    <label>الباقات</label>
+                    {{-- <label>الباقات</label> --}}
                     {!!  Form::select('package_id',
-                    App\Package::all()->pluck('name_ar','id'),
+                    App\Package::pluck('name_ar','id'),
                     null,
                     ['class'=> 'form-control','placeholder'=>'اختر الباقة']) !!}
-
-
+                    @error('package_id')
+                    <span class="invalid-feedback" role="alert">
+                        <strong style="color:red;">{{ $message }}</strong>
+                    </span>
+                    @enderror
             </div>
             <br/>
 
+            
+
+            
 
             <button class="btn btn-primary btn-block btn-new-lg btn-new-lg-rtl" type="submit">تسجيل الدخول</button>
 

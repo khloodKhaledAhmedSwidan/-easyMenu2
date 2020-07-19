@@ -64,21 +64,21 @@
 
             @php
                 $subscription = auth()->user()->subscriptions()->where('status',1)->where('finished',0)->first();
-                $check = $subscription == null ? true : $subscription->package_id ;//== 1 ? true : false;
+                // dd($subscription === null ? 0 : $subscription->package_id );
+                $check = $subscription == null ? 0 : $subscription->package_id ;
                 // dd($check);
                 if($check == 2){
                     $res = $subscription->user;
                     $res->branchs = 4;
                     $res->save();
                     // dd($res);
-                }else{
+                }elseif($check == 3){
                     $res = $subscription->user;
                     $res->branchs = 99;
                     $res->save();
                 }
             @endphp
-@if ($check != 1)
-
+@if ($check != 1 && $check != 0)
 <li class="nav-item {{ strpos(URL::current(), 'admin/cities') !== false ? 'active' : '' }}">
     <a href="{{route('cities.index')}}" class="nav-link ">
                     <i class="icon-settings"></i>
@@ -181,7 +181,7 @@
                 </ul> --}}
             </li>
 
-            @if ($check != 1)
+            @if ($check != 1 && $check != 0)
             <li class="nav-item {{ strpos(URL::current(), 'admin/tables') !== false ? 'active' : '' }}">
                 <a href="{{route('tables.index')}}" class="nav-link ">
                     <i class="icon-settings"></i>
