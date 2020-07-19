@@ -206,7 +206,7 @@
       'file' => 
       array (
         'driver' => 'file',
-        'path' => 'F:\\easyMenu\\git\\storage\\framework/cache/data',
+        'path' => 'C:\\Users\\Nour\\Desktop\\-easyMenu2\\storage\\framework/cache/data',
       ),
       'memcached' => 
       array (
@@ -278,7 +278,7 @@
       array (
         'driver' => 'sqlite',
         'url' => NULL,
-        'database' => 'easy_menu',
+        'database' => 'easymenu_easy_menu',
         'prefix' => '',
         'foreign_key_constraints' => true,
       ),
@@ -288,9 +288,9 @@
         'url' => NULL,
         'host' => '127.0.0.1',
         'port' => '3306',
-        'database' => 'easy_menu',
-        'username' => 'root',
-        'password' => '',
+        'database' => 'easymenu_easy_menu',
+        'username' => 'easymenu_easymenu',
+        'password' => ']Q$xx,h((S(7',
         'unix_socket' => '',
         'charset' => 'utf8mb4',
         'collation' => 'utf8mb4_unicode_ci',
@@ -308,9 +308,9 @@
         'url' => NULL,
         'host' => '127.0.0.1',
         'port' => '3306',
-        'database' => 'easy_menu',
-        'username' => 'root',
-        'password' => '',
+        'database' => 'easymenu_easy_menu',
+        'username' => 'easymenu_easymenu',
+        'password' => ']Q$xx,h((S(7',
         'charset' => 'utf8',
         'prefix' => '',
         'prefix_indexes' => true,
@@ -323,9 +323,9 @@
         'url' => NULL,
         'host' => '127.0.0.1',
         'port' => '3306',
-        'database' => 'easy_menu',
-        'username' => 'root',
-        'password' => '',
+        'database' => 'easymenu_easy_menu',
+        'username' => 'easymenu_easymenu',
+        'password' => ']Q$xx,h((S(7',
         'charset' => 'utf8',
         'prefix' => '',
         'prefix_indexes' => true,
@@ -378,19 +378,19 @@
       'local' => 
       array (
         'driver' => 'local',
-        'root' => 'F:\\easyMenu\\git\\storage\\app',
+        'root' => 'C:\\Users\\Nour\\Desktop\\-easyMenu2\\storage\\app',
       ),
       'public' => 
       array (
         'driver' => 'local',
-        'root' => 'F:\\easyMenu\\git\\storage\\app/public',
+        'root' => 'C:\\Users\\Nour\\Desktop\\-easyMenu2\\storage\\app/public',
         'url' => '/storage',
         'visibility' => 'public',
       ),
       'test' => 
       array (
         'driver' => 'local',
-        'root' => 'F:\\easyMenu\\git\\storage\\app/public/uploads/qr-code',
+        'root' => 'C:\\Users\\Nour\\Desktop\\-easyMenu2\\storage\\app/public/uploads/qr-code',
         'url' => '/storage',
         'visibility' => 'public',
       ),
@@ -473,13 +473,13 @@
       'single' => 
       array (
         'driver' => 'single',
-        'path' => 'F:\\easyMenu\\git\\storage\\logs/laravel.log',
+        'path' => 'C:\\Users\\Nour\\Desktop\\-easyMenu2\\storage\\logs/laravel.log',
         'level' => 'debug',
       ),
       'daily' => 
       array (
         'driver' => 'daily',
-        'path' => 'F:\\easyMenu\\git\\storage\\logs/laravel.log',
+        'path' => 'C:\\Users\\Nour\\Desktop\\-easyMenu2\\storage\\logs/laravel.log',
         'level' => 'debug',
         'days' => 14,
       ),
@@ -543,7 +543,7 @@
       'theme' => 'default',
       'paths' => 
       array (
-        0 => 'F:\\easyMenu\\git\\resources\\views/vendor/mail',
+        0 => 'C:\\Users\\Nour\\Desktop\\-easyMenu2\\resources\\views/vendor/mail',
       ),
     ),
     'log_channel' => NULL,
@@ -557,7 +557,7 @@
     'keywords' => '',
     'creator' => 'Abdulrahman tqnee.com',
     'display_mode' => 'fullpage',
-    'tempDir' => 'F:\\easyMenu\\git\\../temp/',
+    'tempDir' => 'C:\\Users\\Nour\\Desktop\\-easyMenu2\\../temp/',
   ),
   'queue' => 
   array (
@@ -647,7 +647,7 @@
     'lifetime' => '10080',
     'expire_on_close' => false,
     'encrypt' => false,
-    'files' => 'F:\\easyMenu\\git\\storage\\framework/sessions',
+    'files' => 'C:\\Users\\Nour\\Desktop\\-easyMenu2\\storage\\framework/sessions',
     'connection' => NULL,
     'table' => 'sessions',
     'store' => NULL,
@@ -667,9 +667,9 @@
   array (
     'paths' => 
     array (
-      0 => 'F:\\easyMenu\\git\\resources\\views',
+      0 => 'C:\\Users\\Nour\\Desktop\\-easyMenu2\\resources\\views',
     ),
-    'compiled' => 'F:\\easyMenu\\git\\storage\\framework\\views',
+    'compiled' => 'C:\\Users\\Nour\\Desktop\\-easyMenu2\\storage\\framework\\views',
   ),
   'dompdf' => 
   array (
@@ -677,10 +677,10 @@
     'orientation' => 'portrait',
     'defines' => 
     array (
-      'font_dir' => 'F:\\easyMenu\\git\\storage\\fonts/',
-      'font_cache' => 'F:\\easyMenu\\git\\storage\\fonts/',
-      'temp_dir' => 'C:\\Users\\khloo\\AppData\\Local\\Temp',
-      'chroot' => 'F:\\easyMenu\\git',
+      'font_dir' => 'C:\\Users\\Nour\\Desktop\\-easyMenu2\\storage\\fonts/',
+      'font_cache' => 'C:\\Users\\Nour\\Desktop\\-easyMenu2\\storage\\fonts/',
+      'temp_dir' => 'C:\\Users\\Nour\\AppData\\Local\\Temp',
+      'chroot' => 'C:\\Users\\Nour\\Desktop\\-easyMenu2',
       'enable_font_subsetting' => false,
       'pdf_backend' => 'CPDF',
       'default_media_type' => 'screen',
