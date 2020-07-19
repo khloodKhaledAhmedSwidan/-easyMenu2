@@ -1,0 +1,1 @@
+[10-Feb-2020 08:55:25 UTC] PHP Fatal error:  Cannot use App\Mail\Certification as Certification because the name is already in use in /home/talent/public_html/app/Http/Controllers/AdminController/PaymentController.php on line 10

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="default">
+	<meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap:">
+
+	<link rel="icon" href="images/favicon.png">
+	<title>ESEY MENU</title>
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,500i,700,900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="css/framework7.bundle.css">
+	<link rel="stylesheet" href="css/font-awesome.css">
+	<link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+	
+	<div id="app" dir="rtl">
+
+		<div class="view view-main view-init ios-edges" data-url="/">
+			<div class="page page-home page-with-subnavbar">
+			<!--	<div class="toolbar tabbar tabbar-labels toolbar-bottom">
+					<div class="toolbar-inner">
+						<a href="#tab-home" class="tab-link tab-link-active">
+							<i class="fas fa-home"></i>
+							<span class="tabbar-label">الرئيسية</span>
+						</a>
+						<a href="#tab-searchx" class="tab-link">
+							<i class="fas fa-search"></i>
+							<span class="tabbar-label">البحث</span>
+						</a>
+					 
+						<a href="#tab-cart" class="tab-link">
+							<i class="fas fa-shopping-cart"></i>
+							<span class="tabbar-label">السلة</span>
+						</a>
+						<a href="#tab-accountx" class="tab-link">
+							<i class="fas fa-user"></i>
+							<span class="tabbar-label">حسابي</span>
+						</a>
+					</div>
+				</div>-->
+				<div class="tabs">
+					<div id="tab-home" class="tab tab-active tab-home">
+						<!-- home -->
+
+						<!-- navbar home -->
+						<div class="navbar navbar-home">
+							<div class="navbar-inner">
+								<div class="left">
+										<a href="#">
+										<i class="fas fa-share-alt"></i>
+									</a>
+								</div>
+								<div class="title" style="text-align: center;">
+								<img src="images/easy.png" style="max-width: 50px; display: initial;" />
+								</div>
+								<div class="right">
+								
+								 
+								</div>
+							</div>
+						</div>
+						<div class="subnavbar">
+							<form class="searchbar searchbar-init" data-search-container=".search-list" data-search-in=".item-title">
+								<div class="searchbar-inner">
+									<div class="searchbar-input-wrap">
+										<input type="search" placeholder="ادخل كلمة البحث...">
+										<i class="searchbar-icon"></i>
+										<span class="input-clear-button"></span>
+									</div>
+									<span class="searchbar-disable-button">الغاء</span>
+								</div>
+							</form>
+						</div>
+						<!-- end navbar home -->
+
+						<!-- sidebarbar or panel -->
+						<div class="panel-backdrop"></div>
+						<!-- 	<div class="panel panel-right panel-cover sidebar">
+							<div class="list accordion-list">
+								<ul>
+									<li class="accordion-item">
+										<a href="#" class="item-link item-content">
+											<div class="item-media">
+												<i class="fas fa-hamburger"></i>
+											</div>
+											<div class="item-inner">
+												<div class="item-title">الاصناف</div>
+											</div>
+										</a>
+										<div class="accordion-item-content">
+
+										 
+											<div class="divider-space-text"></div>
+										 
+
+											<a href="#" class="panel-close">سلطات</a>
+                                            <a href="#" class="panel-close">سندويشات</a>
+                                            <a href="#" class="panel-close">مشروبات</a>
+                                            <a href="#" class="panel-close">وجبات</a>
+                                            <a href="#" class="panel-close">مقبلات</a>
+                                            <a href="#" class="panel-close">حلويات</a>
+										 
+										 
+											<div class="divider-space-text"></div>
+										 
+
+										</div>
+									</li>
+									<li>
+										<a href="/blog/" class="item-link item-content panel-close">
+											<div class="item-media">
+												<i class="fas fa-blog"></i>
+											</div>
+											<div class="item-inner">
+												<div class="item-title">رابط هنا</div>
+											</div>
+										</a>
+									</li>
+									<li>
+										<a href="/blog-single/" class="item-link item-content panel-close">
+											<div class="item-media">
+												<i class="fas fa-rss"></i>
+											</div>
+											<div class="item-inner">
+												<div class="item-title">  عنوان هنا</div>
+											</div>
+										</a>
+									</li>
+									<li>
+										<a href="/sign-in/" class="item-link item-content panel-close">
+											<div class="item-media">
+												<i class="fas fa-sign-in-alt"></i>
+											</div>
+											<div class="item-inner">
+												<div class="item-title">  تسجيل دخول</div>
+											</div>
+										</a>
+									</li>
+									<li>
+										<a href="/sign-up/" class="item-link item-content panel-close">
+											<div class="item-media">
+												<i class="fas fa-user-plus"></i>
+											</div>
+											<div class="item-inner">
+												<div class="item-title">  تسجيل جديد</div>
+											</div>
+										</a>
+									</li>
+									<li>
+										<a href="/contact-seller/" class="item-link item-content panel-close">
+											<div class="item-media">
+												<i class="fas fa-envelope"></i>
+											</div>
+											<div class="item-inner">
+												<div class="item-title">اتصل بنا  </div>
+											</div>
+										</a>
+									</li>
+									<li>
+										<a href="#" class="item-link item-content panel-close">
+											<div class="item-media">
+												<i class="fas fa-power-off"></i>
+											</div>
+											<div class="item-inner">
+												<div class="item-title">خروج</div>
+											</div>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					end sidebarbar or panel -->
+
+						<!-- slider -->
+						<div class="slider" dir="ltr">
+							<div class="container">
+								<div data-pagination='{"el": ".swiper-pagination"}' data-space-between="10" class="swiper-container swiper-init swiper-container-horizontal">
+									<div class="swiper-pagination"></div>
+									<div class="swiper-wrapper">
+										<div class="swiper-slide">
+											<div class="content">
+												<div class="mask"></div>
+												<img src="images/s1.jpg" alt="">
+											</div>
+										</div>
+										<div class="swiper-slide">
+											<div class="content">
+												<div class="mask"></div>
+												<img src="images/s2.jpg" alt="">
+											</div>
+										</div>
+									 
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- end slider -->
+
+						<!-- cateogries -->
+						<div class="categories segments">
+							<div class="container">
+								<div class="row">
+									<div class="col-50">
+										<div class="content">
+											<a href="/allcategories/">
+												<div class="icon">
+												<img src="images/1.jpg" style="max-width: 94%;padding: 5px;border-radius: 10px;" />
+												</div>
+												<span>سندويتشات</span>
+											</a>
+										</div>
+									</div>
+									<div class="col-50">
+										<div class="content">
+											<a href="/products/">
+												<div class="icon">
+													<img src="images/2.jpg" style="max-width: 94%;padding: 5px;border-radius: 10px;" />
+												</div>
+												<span>سلطات</span>
+											</a>
+										</div>
+									</div>
+									<div class="col-50">
+										<div class="content">
+											<a href="/products/">
+												<div class="icon">
+													<img src="images/3.jpg" style="max-width: 94%;padding: 5px;border-radius: 10px;" />
+												</div>
+												<span>شوربات</span>
+											</a>
+										</div>
+									</div>
+									<div class="col-50">
+										<div class="content">
+											<a href="/products/">
+												<div class="icon">
+													<img src="images/4.jpg" style="max-width: 94%;padding: 5px;border-radius: 10px;" />
+												</div>
+												<span>وجبات</span>
+											</a>
+										</div>
+									</div>
+									<div class="col-50">
+										<div class="content">
+											<a href="/allcategories/">
+												<div class="icon">
+												<img src="images/1.jpg" style="max-width: 94%;padding: 5px;border-radius: 10px;" />
+												</div>
+												<span>سندويتشات</span>
+											</a>
+										</div>
+									</div>
+									<div class="col-50">
+										<div class="content">
+											<a href="/products/">
+												<div class="icon">
+													<img src="images/2.jpg" style="max-width: 94%;padding: 5px;border-radius: 10px;" />
+												</div>
+												<span>سلطات</span>
+											</a>
+										</div>
+									</div>
+									<div class="col-50">
+										<div class="content">
+											<a href="/products/">
+												<div class="icon">
+													<img src="images/3.jpg" style="max-width: 94%;padding: 5px;border-radius: 10px;" />
+												</div>
+												<span>شوربات</span>
+											</a>
+										</div>
+									</div>
+									<div class="col-50">
+										<div class="content">
+											<a href="/products/">
+												<div class="icon">
+													<img src="images/4.jpg" style="max-width: 94%;padding: 5px;border-radius: 10px;" />
+												</div>
+												<span>وجبات</span>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- end cateogries -->
+
+						<!-- end home -->
+					</div>
+			 
+                    
+                    
+                                                            
+            
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<script src="js/framework7.bundle.min.js"></script>
+	<script src="js/routes.js"></script>
+	<script src="js/app.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,14 @@
+.site-header-absolute #site-header-wrap {
+    position: relative !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #165465 !important;
+    z-index: 100;
+}
+
+.themesflat-headings.style-2 .heading {
+    font-size: 22px;
+    line-height: 58px;
+    text-align: center;
+}
