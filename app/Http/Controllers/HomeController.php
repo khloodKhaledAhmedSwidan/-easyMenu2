@@ -479,7 +479,7 @@ class HomeController extends Controller
 
                 flash("سعر الباقة بعد الخصم".$newPrice);
                 //redirect to payment page
-                return  view('payment');
+                return  view('payment',compact('subscription'));
             }else{
                 flash("تاكد من كتابه كود الخصم بشكل صحيح")->error();
                 return back();
@@ -516,12 +516,16 @@ class HomeController extends Controller
     }
     public function showOrderInfo($id){
         // dd($id);
-         $order = Order::find($id);
+        $order = Order::find($id);
         $order_details = unserialize($order->cart_items);
         // dd($order_details);
         return view('admin.orders.new-order-restaurant', compact('order', 'order_details'));
 
     }
- 
+
+    public function lastFun(Request $request, $sub_id)
+    {
+        dd($sub_id);
+    }
 
 }
