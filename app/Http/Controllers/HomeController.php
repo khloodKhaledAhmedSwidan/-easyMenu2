@@ -427,13 +427,13 @@ class HomeController extends Controller
 // {
 //     $user = auth()->user();
 //     if ($user->type == 0) {
-        
-        
+
+
 //         $orders = Order::where('user_id', $user->id)->where('status', '0')->where('delivery', 0)->where('branch_id','!=','null')->get();
 //         dd($orders);
 //                     return view('delivery-orders', compact('orders'));
 //     }
-//     else{  
+//     else{
 //          return redirect()->back();
 //         }
 // }
@@ -449,7 +449,7 @@ class HomeController extends Controller
             'coupon'      => 'sometimes',
             'seller_code' => 'sometimes',
         ]);
-        
+
         $user = User::find($id);
 
         if($request->coupon != null){
@@ -463,7 +463,7 @@ class HomeController extends Controller
                 $subscription->update([
                         'price' => $newPrice,
                         'discount_code_id' => $coupon->id,
-                        
+
                     ]);
 
 
@@ -486,33 +486,27 @@ class HomeController extends Controller
             }
         }
 
-        
 
 
 
 
-        
-        
-        //dd($user);
-        if($coupon){
-            $subscription = $user->subscriptions()->where('user_id',$user->id)->latest();
-            //$oldPrice = $subscription->price;
-            $package =  Package::where('id',$subscription->package_id)->first();
-            $discount = ($package->price * $coupon->percentage)/100;
-            $newPrice = $package->price - $discount ;
-            //dd($newPrice);
-            $user->subscriptions()->where('user_id',$user->id)->update([
-                    'price' => $newPrice,
-                    'discount_code_id' => $coupon->id,
-                ]);
 
-            flash("سعر الباقة بعد الخصم".$newPrice);
-            //    return redirect()->route('pay.bankPage',$user->id);
-            return  back();
+        $subscription = $user->subscriptions()->where('user_id',$user->id)->latest();
+        //$oldPrice = $subscription->price;
+        $package =  Package::where('id',$subscription->package_id)->first();
+        $discount = ($package->price * $coupon->percentage)/100;
+        $newPrice = $package->price - $discount ;
+        //dd($newPrice);
+        $user->subscriptions()->where('user_id',$user->id)->update([
+            'price' => $newPrice,
+            'discount_code_id' => $coupon->id,
+        ]);
 
-        }else{
-            flash("تاكد من كتابه كود الاحاله");
-        }
+        flash("سعر الباقة بعد الخصم".$newPrice);
+        //    return redirect()->route('pay.bankPage',$user->id);
+        return  back();
+
+
     }
     public function showOrderInfo($id){
         // dd($id);
