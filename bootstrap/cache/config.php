@@ -206,7 +206,7 @@
       'file' => 
       array (
         'driver' => 'file',
-        'path' => 'F:\\easyMenu\\git\\storage\\framework/cache/data',
+        'path' => 'C:\\Users\\khloo\\OneDrive\\سطح المكتب\\git\\storage\\framework/cache/data',
       ),
       'memcached' => 
       array (
@@ -378,19 +378,19 @@
       'local' => 
       array (
         'driver' => 'local',
-        'root' => 'F:\\easyMenu\\git\\storage\\app',
+        'root' => 'C:\\Users\\khloo\\OneDrive\\سطح المكتب\\git\\storage\\app',
       ),
       'public' => 
       array (
         'driver' => 'local',
-        'root' => 'F:\\easyMenu\\git\\storage\\app/public',
+        'root' => 'C:\\Users\\khloo\\OneDrive\\سطح المكتب\\git\\storage\\app/public',
         'url' => '/storage',
         'visibility' => 'public',
       ),
       'test' => 
       array (
         'driver' => 'local',
-        'root' => 'F:\\easyMenu\\git\\storage\\app/public/uploads/qr-code',
+        'root' => 'C:\\Users\\khloo\\OneDrive\\سطح المكتب\\git\\storage\\app/public/uploads/qr-code',
         'url' => '/storage',
         'visibility' => 'public',
       ),
@@ -473,13 +473,13 @@
       'single' => 
       array (
         'driver' => 'single',
-        'path' => 'F:\\easyMenu\\git\\storage\\logs/laravel.log',
+        'path' => 'C:\\Users\\khloo\\OneDrive\\سطح المكتب\\git\\storage\\logs/laravel.log',
         'level' => 'debug',
       ),
       'daily' => 
       array (
         'driver' => 'daily',
-        'path' => 'F:\\easyMenu\\git\\storage\\logs/laravel.log',
+        'path' => 'C:\\Users\\khloo\\OneDrive\\سطح المكتب\\git\\storage\\logs/laravel.log',
         'level' => 'debug',
         'days' => 14,
       ),
@@ -527,7 +527,7 @@
   'mail' => 
   array (
     'driver' => 'smtp',
-    'host' => 'smtp.mailtrap.io',
+    'host' => 'mail.easymenu.site',
     'port' => '25',
     'from' => 
     array (
@@ -535,15 +535,15 @@
       'name' => 'Support',
     ),
     'encryption' => NULL,
-    'username' => '745ea9256ab31a',
-    'password' => 'f18336516a72e6',
+    'username' => 'easymenu',
+    'password' => 'tbRuQ4YZmq0H',
     'sendmail' => '/usr/sbin/sendmail -bs',
     'markdown' => 
     array (
       'theme' => 'default',
       'paths' => 
       array (
-        0 => 'F:\\easyMenu\\git\\resources\\views/vendor/mail',
+        0 => 'C:\\Users\\khloo\\OneDrive\\سطح المكتب\\git\\resources\\views/vendor/mail',
       ),
     ),
     'log_channel' => NULL,
@@ -557,7 +557,7 @@
     'keywords' => '',
     'creator' => 'Abdulrahman tqnee.com',
     'display_mode' => 'fullpage',
-    'tempDir' => 'F:\\easyMenu\\git\\../temp/',
+    'tempDir' => 'C:\\Users\\khloo\\OneDrive\\سطح المكتب\\git\\../temp/',
   ),
   'queue' => 
   array (
@@ -647,7 +647,7 @@
     'lifetime' => '10080',
     'expire_on_close' => false,
     'encrypt' => false,
-    'files' => 'F:\\easyMenu\\git\\storage\\framework/sessions',
+    'files' => 'C:\\Users\\khloo\\OneDrive\\سطح المكتب\\git\\storage\\framework/sessions',
     'connection' => NULL,
     'table' => 'sessions',
     'store' => NULL,
@@ -667,9 +667,9 @@
   array (
     'paths' => 
     array (
-      0 => 'F:\\easyMenu\\git\\resources\\views',
+      0 => 'C:\\Users\\khloo\\OneDrive\\سطح المكتب\\git\\resources\\views',
     ),
-    'compiled' => 'F:\\easyMenu\\git\\storage\\framework\\views',
+    'compiled' => 'C:\\Users\\khloo\\OneDrive\\سطح المكتب\\git\\storage\\framework\\views',
   ),
   'dompdf' => 
   array (
@@ -677,10 +677,10 @@
     'orientation' => 'portrait',
     'defines' => 
     array (
-      'font_dir' => 'F:\\easyMenu\\git\\storage\\fonts/',
-      'font_cache' => 'F:\\easyMenu\\git\\storage\\fonts/',
+      'font_dir' => 'C:\\Users\\khloo\\OneDrive\\سطح المكتب\\git\\storage\\fonts/',
+      'font_cache' => 'C:\\Users\\khloo\\OneDrive\\سطح المكتب\\git\\storage\\fonts/',
       'temp_dir' => 'C:\\Users\\khloo\\AppData\\Local\\Temp',
-      'chroot' => 'F:\\easyMenu\\git',
+      'chroot' => 'C:\\Users\\khloo\\OneDrive\\سطح المكتب\\git',
       'enable_font_subsetting' => false,
       'pdf_backend' => 'CPDF',
       'default_media_type' => 'screen',

@@ -24,7 +24,7 @@
             <i class="fa fa-circle"></i>
         </li>
         <li>
-            <a href="{{ url('admin/orders/new') }}">الطلبات</a>
+            <a href="{{ url('redirect.order') }}">الطلبات</a>
             <i class="fa fa-circle"></i>
         </li>
         <li>
@@ -79,7 +79,7 @@
                 <td class="no_dec">{{ $order->user->name }}</td>
                 <td class="no_dec">{{ $order->branch['name_ar'] }}</td>
                 <td class="no_dec">
-                    @if ($order->delivery != null)
+                    @if ( $order->delivery == 0)
                     توصيل للعنوان
                     <button type="button" class="btn btn-primary" data-toggle="modal"
                         data-target="#exampleModal{{$order->id}}">
@@ -121,10 +121,7 @@
                             </div>
                         </div>
                     </div>
-                    @elseif($order->table_id != null)
-                    رقم الطاولة  : {{$order->table_id}}
-                    @else
-                    استلام من الفرع
+            
                     @endif
 
                 </td>

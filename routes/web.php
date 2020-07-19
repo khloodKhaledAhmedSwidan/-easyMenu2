@@ -77,8 +77,14 @@ Route::get('pay-by-bank/{user}','HomeController@payBank')->name('pay.bankPage');
 
             Route::get('/orders/{id}/delete', 'AdminController\OrderController@deleteOrder')->name('orders.delete');
             Route::get('/delivery/orders', 'HomeController@deliveryOrder')->name('delivery.order');
+            // Route::get('/delivery/orders/finished', 'HomeController@deliveryOrderFinished')->name('delivery.orderFinished');
+            Route::get('/subscripe/package','PackageController@showPackageSubscripe')->name('show.packageSubscripe');
+            Route::get('/subscripe/package/{id}','PackageController@changePackage')->name('change.package');
+            Route::post('/subscripe/package/{id}','PackageController@changeedPackage')->name('changed.package');
+
             Route::get('/delivery/order/{id}', 'HomeController@redirectOrderPage')->name('redirect.order');
             Route::post('/delivery/order/{id}', 'HomeController@redirectOrder')->name('send.orderBranch');
+            // Route::get('/show/order/{id}', 'HomeController@showOrderInfo')->name('show.orderInfo');
 
             Route::get('bank/payments/edit/{id}', 'AdminController\HomeController@bank_payments_edit')->name('AdminEditBankPayment');
             Route::post('bank/payments/update/{id}', 'AdminController\HomeController@bank_payments_update')->name('AdminUpdateBankPayment');
