@@ -15,10 +15,21 @@ class PackageController extends Controller
    if($user->type == 0){
 $subscription = $user->subscriptions()->where('user_id',$user->id)->first();
 // dd($subscription);
-// $oldTime  =  $subscription->created_at;
+// $oldTime  =  $subscription->created_at->format('m');
+// // dd($oldTime);
+// $now =Carbon::now('m');
+// $subDate = $now -$oldTime;
+// dd();
+
 // $now = Carbon::now();
 // $allDate = $now - $oldTime;
 // dd($allDate);
+
+
+$packageDuration =Package::find($request->package_id)->duration;
+$now =Carbon::now('m');
+     $end=   $now->addMonths($packageDuration);
+
 return view('website.users.subscripe-package',compact('subscription'));
    }else{
     flash('لا يمكنك دخول هذه الصفحة');
