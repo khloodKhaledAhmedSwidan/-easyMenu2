@@ -51,7 +51,8 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $packageDuration =Package::find(1)->duration;
+      
+        $packageDuration =Package::find($request->package_id)->duration;
 $now =Carbon::now('m');
      $end=   $now->addMonths($packageDuration);
 
@@ -79,9 +80,10 @@ $now =Carbon::now('m');
 
         $user->subscriptions()->create(
             [
-                'package_id' => 1,
+                'package_id' => $request->package_id,
                 'status' =>1,
                 'end_at' => $end,
+                'price'=> 0,
             ]);
 
         flash('تم اضافة بيانات المطعم');

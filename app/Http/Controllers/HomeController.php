@@ -384,7 +384,8 @@ class HomeController extends Controller
         $user = auth()->user();
         if ($user->type == 0) {
 
-            $orders = Order::where('user_id', $user->id)->where('status', '0')->where('delivery', 0)->get();
+
+            $orders = Order::where('user_id', $user->id)->where('status', '0')->where('delivery', 0)->where('branch_id',null)->get();
 //dd($orders);
             return view('delivery-orders', compact('orders'));
 
@@ -421,6 +422,22 @@ class HomeController extends Controller
         return redirect()->back();
 
     }
+
+// public function deliveryOrderFinished()
+// {
+//     $user = auth()->user();
+//     if ($user->type == 0) {
+        
+        
+//         $orders = Order::where('user_id', $user->id)->where('status', '0')->where('delivery', 0)->where('branch_id','!=','null')->get();
+//         dd($orders);
+//                     return view('delivery-orders', compact('orders'));
+//     }
+//     else{  
+//          return redirect()->back();
+//         }
+// }
+
     public function payBank($user){
         $user = User::find($user);
         return view('pay-by-bank',compact('user'));
@@ -497,4 +514,14 @@ class HomeController extends Controller
             flash("تاكد من كتابه كود الاحاله");
         }
     }
+    public function showOrderInfo($id){
+        // dd($id);
+         $order = Order::find($id);
+        $order_details = unserialize($order->cart_items);
+        // dd($order_details);
+        return view('admin.orders.new-order-restaurant', compact('order', 'order_details'));
+
+    }
+ 
+
 }

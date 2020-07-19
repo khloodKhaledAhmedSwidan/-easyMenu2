@@ -101,20 +101,25 @@
                     </li>
                 </ul> --}}
             </li>
-                    <li class="nav-item {{ strpos(URL::current(), '/delivery/orders') !== false ? 'active' : '' }}">
-                        <a href="{{route('delivery.order')}}" class="nav-link ">
-                            <i class="icon-settings"></i>
-                            <span class="title">الطلبات</span>
-                            <span class="arrow"></span>
+ 
+
+            <li class="nav-item {{ strpos(URL::current(), '/delivery/orders') !== false ? 'active' : '' }}">
+                <a href="{{route('delivery.order')}}" class="nav-link ">
+                    <i class="icon-settings"></i>
+                    <span class="title">الطلبات</span>
+                    <span class="arrow"></span>
+                </a>
+                {{-- <ul class="sub-menu">
+                    <li class="nav-item  ">
+                        <a href="" class="nav-link ">
+                            <span class="title"> كافة الفروع</span>
                         </a>
-                        {{-- <ul class="sub-menu">
-                            <li class="nav-item  ">
-                                <a href="" class="nav-link ">
-                                    <span class="title"> كافة الاحصائيات</span>
-                                </a>
-                            </li>
-                        </ul> --}}
                     </li>
+                </ul> --}}
+            </li>
+ 
+
+
 
 @endif
 
@@ -186,6 +191,20 @@
                 <a href="{{route('tables.index')}}" class="nav-link ">
                     <i class="icon-settings"></i>
                     <span class="title">الطاولات</span>
+                    <span class="arrow"></span>
+                </a>
+                {{-- <ul class="sub-menu">
+                    <li class="nav-item  ">
+                        <a href="" class="nav-link ">
+                            <span class="title"> كافة الاسليدر الاعلاني</span>
+                        </a>
+                    </li>
+                </ul> --}}
+            </li>
+            <li class="nav-item {{ strpos(URL::current(), '/subscripe/package') !== false ? 'active' : '' }}">
+                <a href="{{route('show.packageSubscripe')}}" class="nav-link ">
+                    <i class="icon-settings"></i>
+                    <span class="title">الباقات</span>
                     <span class="arrow"></span>
                 </a>
                 {{-- <ul class="sub-menu">

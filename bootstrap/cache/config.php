@@ -206,7 +206,11 @@
       'file' => 
       array (
         'driver' => 'file',
+<<<<<<< HEAD
         'path' => 'C:\\Users\\Nour\\Desktop\\-easyMenu2\\storage\\framework/cache/data',
+=======
+        'path' => 'C:\\Users\\khloo\\OneDrive\\سطح المكتب\\git\\storage\\framework/cache/data',
+>>>>>>> khl
       ),
       'memcached' => 
       array (
@@ -378,19 +382,31 @@
       'local' => 
       array (
         'driver' => 'local',
+<<<<<<< HEAD
         'root' => 'C:\\Users\\Nour\\Desktop\\-easyMenu2\\storage\\app',
+=======
+        'root' => 'C:\\Users\\khloo\\OneDrive\\سطح المكتب\\git\\storage\\app',
+>>>>>>> khl
       ),
       'public' => 
       array (
         'driver' => 'local',
+<<<<<<< HEAD
         'root' => 'C:\\Users\\Nour\\Desktop\\-easyMenu2\\storage\\app/public',
+=======
+        'root' => 'C:\\Users\\khloo\\OneDrive\\سطح المكتب\\git\\storage\\app/public',
+>>>>>>> khl
         'url' => '/storage',
         'visibility' => 'public',
       ),
       'test' => 
       array (
         'driver' => 'local',
+<<<<<<< HEAD
         'root' => 'C:\\Users\\Nour\\Desktop\\-easyMenu2\\storage\\app/public/uploads/qr-code',
+=======
+        'root' => 'C:\\Users\\khloo\\OneDrive\\سطح المكتب\\git\\storage\\app/public/uploads/qr-code',
+>>>>>>> khl
         'url' => '/storage',
         'visibility' => 'public',
       ),
@@ -473,13 +489,21 @@
       'single' => 
       array (
         'driver' => 'single',
+<<<<<<< HEAD
         'path' => 'C:\\Users\\Nour\\Desktop\\-easyMenu2\\storage\\logs/laravel.log',
+=======
+        'path' => 'C:\\Users\\khloo\\OneDrive\\سطح المكتب\\git\\storage\\logs/laravel.log',
+>>>>>>> khl
         'level' => 'debug',
       ),
       'daily' => 
       array (
         'driver' => 'daily',
+<<<<<<< HEAD
         'path' => 'C:\\Users\\Nour\\Desktop\\-easyMenu2\\storage\\logs/laravel.log',
+=======
+        'path' => 'C:\\Users\\khloo\\OneDrive\\سطح المكتب\\git\\storage\\logs/laravel.log',
+>>>>>>> khl
         'level' => 'debug',
         'days' => 14,
       ),
@@ -527,7 +551,7 @@
   'mail' => 
   array (
     'driver' => 'smtp',
-    'host' => 'smtp.mailtrap.io',
+    'host' => 'mail.easymenu.site',
     'port' => '25',
     'from' => 
     array (
@@ -535,15 +559,19 @@
       'name' => 'Support',
     ),
     'encryption' => NULL,
-    'username' => '745ea9256ab31a',
-    'password' => 'f18336516a72e6',
+    'username' => 'easymenu',
+    'password' => 'tbRuQ4YZmq0H',
     'sendmail' => '/usr/sbin/sendmail -bs',
     'markdown' => 
     array (
       'theme' => 'default',
       'paths' => 
       array (
+<<<<<<< HEAD
         0 => 'C:\\Users\\Nour\\Desktop\\-easyMenu2\\resources\\views/vendor/mail',
+=======
+        0 => 'C:\\Users\\khloo\\OneDrive\\سطح المكتب\\git\\resources\\views/vendor/mail',
+>>>>>>> khl
       ),
     ),
     'log_channel' => NULL,
@@ -557,7 +585,11 @@
     'keywords' => '',
     'creator' => 'Abdulrahman tqnee.com',
     'display_mode' => 'fullpage',
+<<<<<<< HEAD
     'tempDir' => 'C:\\Users\\Nour\\Desktop\\-easyMenu2\\../temp/',
+=======
+    'tempDir' => 'C:\\Users\\khloo\\OneDrive\\سطح المكتب\\git\\../temp/',
+>>>>>>> khl
   ),
   'queue' => 
   array (
@@ -647,7 +679,11 @@
     'lifetime' => '10080',
     'expire_on_close' => false,
     'encrypt' => false,
+<<<<<<< HEAD
     'files' => 'C:\\Users\\Nour\\Desktop\\-easyMenu2\\storage\\framework/sessions',
+=======
+    'files' => 'C:\\Users\\khloo\\OneDrive\\سطح المكتب\\git\\storage\\framework/sessions',
+>>>>>>> khl
     'connection' => NULL,
     'table' => 'sessions',
     'store' => NULL,
@@ -667,9 +703,15 @@
   array (
     'paths' => 
     array (
+<<<<<<< HEAD
       0 => 'C:\\Users\\Nour\\Desktop\\-easyMenu2\\resources\\views',
     ),
     'compiled' => 'C:\\Users\\Nour\\Desktop\\-easyMenu2\\storage\\framework\\views',
+=======
+      0 => 'C:\\Users\\khloo\\OneDrive\\سطح المكتب\\git\\resources\\views',
+    ),
+    'compiled' => 'C:\\Users\\khloo\\OneDrive\\سطح المكتب\\git\\storage\\framework\\views',
+>>>>>>> khl
   ),
   'dompdf' => 
   array (
@@ -677,10 +719,17 @@
     'orientation' => 'portrait',
     'defines' => 
     array (
+<<<<<<< HEAD
       'font_dir' => 'C:\\Users\\Nour\\Desktop\\-easyMenu2\\storage\\fonts/',
       'font_cache' => 'C:\\Users\\Nour\\Desktop\\-easyMenu2\\storage\\fonts/',
       'temp_dir' => 'C:\\Users\\Nour\\AppData\\Local\\Temp',
       'chroot' => 'C:\\Users\\Nour\\Desktop\\-easyMenu2',
+=======
+      'font_dir' => 'C:\\Users\\khloo\\OneDrive\\سطح المكتب\\git\\storage\\fonts/',
+      'font_cache' => 'C:\\Users\\khloo\\OneDrive\\سطح المكتب\\git\\storage\\fonts/',
+      'temp_dir' => 'C:\\Users\\khloo\\AppData\\Local\\Temp',
+      'chroot' => 'C:\\Users\\khloo\\OneDrive\\سطح المكتب\\git',
+>>>>>>> khl
       'enable_font_subsetting' => false,
       'pdf_backend' => 'CPDF',
       'default_media_type' => 'screen',

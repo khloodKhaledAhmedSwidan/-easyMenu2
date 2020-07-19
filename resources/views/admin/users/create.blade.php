@@ -133,6 +133,19 @@
                                             </span>
                                             @endif
                                         </div>
+                                        <div class="form-group">
+
+                                   
+                                            <label class="control-label">الباقات</label>
+                                            {!!  Form::select('package_id',
+                                            App\Package::all()->pluck('name_ar','id'),
+                                            null,
+                                            ['class'=> 'form-control','placeholder'=>'اختر الباقة']) !!}
+                        
+                        
+                                    </div>
+                                 
+                               
                                         {{-- <div class="form-body">
                                             <div class="form-group ">
                                                 <label class="control-label col-md-3">لوجو المطعم</label>
