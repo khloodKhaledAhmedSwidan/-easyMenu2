@@ -182,7 +182,8 @@
                     </span>
                     @enderror
                 </div>
-                {{-- <div class="form-group" id="price">
+                
+                <div class="form-group" id="price">
                     <label class="form-label">الضريبة</label>
                     <input type="number" name="vat" class="form-control" value="{{$model->vat}}">
                 @error('vat')
@@ -190,7 +191,7 @@
                     <strong>{{ $errors->first('vat') }}</strong>
                 </span>
                 @enderror
-            </div> --}}
+            </div>
 
 
 

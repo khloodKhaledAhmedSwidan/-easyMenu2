@@ -201,6 +201,7 @@
                     </li>
                 </ul> --}}
             </li>
+            @endif
             <li class="nav-item {{ strpos(URL::current(), '/subscripe/package') !== false ? 'active' : '' }}">
                 <a href="{{route('show.packageSubscripe')}}" class="nav-link ">
                     <i class="icon-settings"></i>
@@ -215,7 +216,6 @@
                     </li>
                 </ul> --}}
             </li>
-            @endif
 
             <li class="nav-item {{ strpos(URL::current(), 'admin/sliders') !== false ? 'active' : '' }}">
                 <a href="{{route('sliders.index')}}" class="nav-link ">
