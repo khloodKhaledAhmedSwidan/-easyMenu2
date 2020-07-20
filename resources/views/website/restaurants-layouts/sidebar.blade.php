@@ -209,6 +209,18 @@
                             <i class="icon-settings"></i>
                             <span class="title">سليد الاعلاني</span>
                             <span class="arrow"></span>
+            @endif
+            <li class="nav-item {{ strpos(URL::current(), '/subscripe/package') !== false ? 'active' : '' }}">
+                <a href="{{route('show.packageSubscripe')}}" class="nav-link ">
+                    <i class="icon-settings"></i>
+                    <span class="title">الباقات</span>
+                    <span class="arrow"></span>
+                </a>
+                {{-- <ul class="sub-menu">
+                    <li class="nav-item  ">
+                        <a href="" class="nav-link ">
+                            <span class="title"> كافة الاسليدر الاعلاني</span>
+>>>>>>> 316054ef0346b616ff4a23eae32f1d5ff9a0a1ca
                         </a>
                         {{-- <ul class="sub-menu">
                             <li class="nav-item  ">
