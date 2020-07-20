@@ -167,30 +167,40 @@ class HomeController extends Controller
     public function home()
     {
         $user = auth()->user();
-        $test = $user->subscriptions()->where('user_id', $user->id)->latest()->first();
-//        dd($test);
-//        dd($test);
-        $nowDate = \Carbon\Carbon::now()->toDateString();
-//        dd($now);
-        if($test['finished'] == 1){
-            return redirect()->route('show.packageSubscripe');
-        }
-        if ($test['finished'] == 0){
-        $endDate = $test['end_at'];
-//        dd($endDate);
-//        $dt1 = Carbon::create($endDate);
-//        $dt2 = Carbon::create($nowDate);
-//        dd($dt2);
-//        $check = $dt1->greaterThan($dt2);
-//
+        // $finished = 0;
+        // dd('here');
+        if($user->type == 0){
 
-        $check = $endDate->greaterThan($nowDate);
-        if ($check) {
-            return view('res-landpage');
-        } else {
-            $test->update(['finished'=>1]);
-            return redirect()->route('show.packageSubscripe');
-}}
+            $test = $user->subscriptions()->latest()->first();
+            $nowDate = \Carbon\Carbon::now()->toDateString();
+
+            if($test['finished'] == 1){
+                return redirect()->route('show.packageSubscripe');
+            }
+            if ($test['finished'] == 0){
+                $endDate = $test['end_at'];
+        
+                $check = $endDate->greaterThan($nowDate);
+                if ($check) {
+                    return view('res-landpage');
+                } else {
+                    $test->update(['finished'=>1]);
+                    // $finished = 1;
+                    return redirect()->route('show.packageSubscripe');
+                }
+            }
+        }else{
+            // dd('here');
+            $rest = auth()->user()->restaurant;
+            $finished = $rest->subscriptions()->latest()->first();
+            $check = $finished == null ? 0 : $finished->finished == 0 ? 0 : 1; 
+            // dd($finished);
+            if($check == 1){
+                abort(403);
+            }else{
+                return view('home');
+            }
+        }
     }
 
     public function splash()

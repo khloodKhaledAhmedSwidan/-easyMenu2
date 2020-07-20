@@ -126,6 +126,10 @@ public function user()
 {
     return $this->belongsTo(User::class);
 }
+public function restaurant()
+{
+    return $this->belongsTo(User::class,'restaurant_id');
+}
 public function city()
 {
     return $this->belongsTo(City::class);

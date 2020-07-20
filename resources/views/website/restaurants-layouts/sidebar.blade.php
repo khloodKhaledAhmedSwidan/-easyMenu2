@@ -12,15 +12,8 @@
                 </div>
             </li>
 @if(!auth()->user()->type == 1)
-{{--            <li class="nav-item start active open">--}}
-{{--                <a href="/home" class="nav-link ">--}}
-{{--                    <i class="icon-home"></i>--}}
-{{--                    <span class="title">الرئيسية</span>--}}
-{{--                    <span class="selected"></span>--}}
-{{--                </a>--}}
-{{--            </li>--}}
-{{--                @php dd(auth()->user()->subscriptions()->where('finished',1)->latest()); @endphp--}}
-@if(auth()->user()->subscriptions()->orderBy('id' , 'desc')->first()->finished != 1)
+
+    @if(auth()->user()->subscriptions()->orderBy('id' , 'desc')->first()->finished != 1)
 
                 <li class="nav-item {{ strpos(URL::current(), '/landpage') !== false ? 'active' : '' }}">
                     <a href="/landpage" class="nav-link ">
@@ -79,9 +72,9 @@
                     $res->save();
                 }
             @endphp
-@if ($check != 1 && $check != 0)
-<li class="nav-item {{ strpos(URL::current(), 'admin/cities') !== false ? 'active' : '' }}">
-    <a href="{{route('cities.index')}}" class="nav-link ">
+        @if ($check != 1 && $check != 0)
+            <li class="nav-item {{ strpos(URL::current(), 'admin/cities') !== false ? 'active' : '' }}">
+            <a href="{{route('cities.index')}}" class="nav-link ">
                     <i class="icon-settings"></i>
                     <span class="title">المدن</span>
                     <span class="arrow"></span>
@@ -122,7 +115,7 @@
 
 
 
-@endif
+        @endif
 
 
 
@@ -188,55 +181,10 @@
             </li>
 
             @if ($check != 1 && $check != 0)
-            <li class="nav-item {{ strpos(URL::current(), 'admin/tables') !== false ? 'active' : '' }}">
-                <a href="{{route('tables.index')}}" class="nav-link ">
-                    <i class="icon-settings"></i>
-                    <span class="title">الطاولات</span>
-                    <span class="arrow"></span>
-                </a>
-                {{-- <ul class="sub-menu">
-                    <li class="nav-item  ">
-                        <a href="" class="nav-link ">
-                            <span class="title"> كافة الاسليدر الاعلاني</span>
-                        </a>
-                    </li>
-                </ul> --}}
-            </li>
-                    @endif
-
-                    <li class="nav-item {{ strpos(URL::current(), 'admin/sliders') !== false ? 'active' : '' }}">
-                        <a href="{{route('sliders.index')}}" class="nav-link ">
-                            <i class="icon-settings"></i>
-                            <span class="title">سليد الاعلاني</span>
-                            <span class="arrow"></span>
-            @endif
-            <li class="nav-item {{ strpos(URL::current(), '/subscripe/package') !== false ? 'active' : '' }}">
-                <a href="{{route('show.packageSubscripe')}}" class="nav-link ">
-                    <i class="icon-settings"></i>
-                    <span class="title">الباقات</span>
-                    <span class="arrow"></span>
-                </a>
-                {{-- <ul class="sub-menu">
-                    <li class="nav-item  ">
-                        <a href="" class="nav-link ">
-                            <span class="title"> كافة الاسليدر الاعلاني</span>
->>>>>>> 316054ef0346b616ff4a23eae32f1d5ff9a0a1ca
-                        </a>
-                        {{-- <ul class="sub-menu">
-                            <li class="nav-item  ">
-                                <a href="" class="nav-link ">
-                                    <span class="title"> كافة الاسليدر الاعلاني</span>
-                                </a>
-                            </li>
-                        </ul> --}}
-                    </li>
-            @endif
-
-
-                <li class="nav-item {{ strpos(URL::current(), '/subscripe/package') !== false ? 'active' : '' }}">
-                    <a href="{{route('show.packageSubscripe')}}" class="nav-link ">
+                <li class="nav-item {{ strpos(URL::current(), 'admin/tables') !== false ? 'active' : '' }}">
+                    <a href="{{route('tables.index')}}" class="nav-link ">
                         <i class="icon-settings"></i>
-                        <span class="title">الباقات</span>
+                        <span class="title">الطاولات</span>
                         <span class="arrow"></span>
                     </a>
                     {{-- <ul class="sub-menu">
@@ -247,23 +195,33 @@
                         </li>
                     </ul> --}}
                 </li>
+            @endif
 
-{{--            <li class="nav-item {{ strpos(URL::current(), '/landpage') !== false ? 'active' : '' }}">--}}
-{{--                <a href="/landpage" class="nav-link ">--}}
-{{--                    <i class="icon-settings"></i>--}}
-{{--                    <span class="title">الاحصائيات</span>--}}
-{{--                    <span class="arrow"></span>--}}
-{{--                </a>--}}
-                {{-- <ul class="sub-menu">
-                    <li class="nav-item  ">
-                        <a href="" class="nav-link ">
-                            <span class="title"> كافة الاحصائيات</span>
-                        </a>
-                    </li>
-                </ul> --}}
-{{--            </li>--}}
-
+                    <li class="nav-item {{ strpos(URL::current(), 'admin/sliders') !== false ? 'active' : '' }}">
+                        <a href="{{route('sliders.index')}}" class="nav-link ">
+                            <i class="icon-settings"></i>
+                            <span class="title">سليد الاعلاني</span>
+                            <span class="arrow"></span>
+    @endif
+            <li class="nav-item {{ strpos(URL::current(), '/subscripe/package') !== false ? 'active' : '' }}">
+                <a href="{{route('show.packageSubscripe')}}" class="nav-link ">
+                    <i class="icon-settings"></i>
+                    <span class="title">الباقات</span>
+                    <span class="arrow"></span>
+                </a>
+            </li>
 @endif
+
+
+                {{-- <li class="nav-item {{ strpos(URL::current(), '/subscripe/package') !== false ? 'active' : '' }}">
+                    <a href="{{route('show.packageSubscripe')}}" class="nav-link ">
+                        <i class="icon-settings"></i>
+                        <span class="title">الباقات</span>
+                        <span class="arrow"></span>
+                    </a>
+                </li> --}}
+
+
 @if(!auth()->user()->type == 0)
             <li class="nav-item {{ strpos(URL::current(), 'admin/orders') !== false ? 'active' : '' }}">
                 <a href="javascript:;" class="nav-link nav-toggle">
@@ -297,108 +255,8 @@
 
 @endif
 
-            {{--
-            <li class="nav-item {{ strpos(URL::current(), 'admin/cities') !== false ? 'active' : '' }}">
-            <a href="javascript:;" class="nav-link ">
-                <i class="icon-settings"></i>
-                <span class="title">المدن</span>
-                <span class="arrow"></span>
-            </a>
-            <ul class="sub-menu">
-                <li class="nav-item  ">
-                    <a href="/admin/cities" class="nav-link ">
-                        <span class="title"> كافة المدن</span>
-                    </a>
-                </li>
-            </ul>
-            </li>
-
-            <li class="nav-item {{ strpos(URL::current(), 'admin/packages') !== false ? 'active' : '' }}">
-                <a href="javascript:;" class="nav-link ">
-                    <i class="icon-settings"></i>
-                    <span class="title">الباقات</span>
-                    <span class="arrow"></span>
-                </a>
-                <ul class="sub-menu">
-                    <li class="nav-item  ">
-                        <a href="/admin/packages" class="nav-link ">
-                            <span class="title"> كافة الباقات</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-
-
-
-            <li class="nav-item {{ strpos(URL::current(), 'admin/shops') !== false ? 'active' : '' }}">
-                <a href="javascript:;" class="nav-link ">
-                    <i class="icon-settings"></i>
-                    <span class="title">المحلات</span>
-                    <span class="arrow"></span>
-                </a>
-                <ul class="sub-menu">
-                    <li class="nav-item  ">
-                        <a href="/admin/shops" class="nav-link ">
-                            <span class="title"> كافة المحلات</span>
-                        </a>
-                    </li>
-                </ul>
-            </li> --}}
-
-            {{--
-            <li class="nav-item {{ strpos(URL::current(), 'admin/news') !== false ? 'active' : '' }}">
-            <a href="javascript:;" class="nav-link ">
-                <i class="icon-settings"></i>
-                <span class="title">الاخبار</span>
-                <span class="arrow"></span>
-            </a>
-            <ul class="sub-menu">
-                <li class="nav-item  ">
-                    <a href="/admin/news" class="nav-link ">
-                        <span class="title"> الاخبار </span>
-                    </a>
-                </li>
-                <li class="nav-item  ">
-                    <a href="/admin/news/create" class="nav-link ">
-                        <span class="title"> اضافة خبر جديد</span>
-                    </a>
-                </li>
-            </ul>
-            </li> --}}
-
-
-            {{-- <li class="nav-item {{ strpos(URL::current(), 'admin/setting') !== false ? 'active' : '' }}">
-            <a href="javascript:;" class="nav-link ">
-                <i class="icon-settings"></i>
-                <span class="title">الاعدادات العامة</span>
-                <span class="arrow"></span>
-            </a>
-            <ul class="sub-menu">
-                <li class="nav-item  ">
-                    <a href="/admin/setting" class="nav-link ">
-                        <span class="title">اعدادات البنك</span>
-                    </a>
-                </li>
-            </ul>
-            </li> --}}
-
-            {{--
-            <li class="nav-item {{ strpos(URL::current(), 'admin/pages') !== false ? 'active' : '' }}">
-            <a href="{{url('admin/page')}}" class="nav-link ">
-                <i class="icon-settings"></i>
-                <span class="title">الصفحات</span>
-                <span class="arrow"></span>
-            </a>
-
-            <ul class="sub-menu">
-                <li class="nav-item  ">
-                    <a href="/admin/page" class="nav-link ">
-                        <span class="title">كافة الصفحات</span>
-                    </a>
-                </li>
-            </ul>
-
-            </li> --}}
+        
+        
 
         </ul>
         <!-- END SIDEBAR MENU -->
