@@ -1,6 +1,7 @@
 @include('website.layouts.header')
 
 
+
 <div class="container">
     <ul class="breadcrumb mt-4">
         <li class="breadcrumb-item"><a href="{{route('restaurants',$user)}}"><i class="fa fa-home"></i></a></li>
@@ -226,7 +227,8 @@
                                     <label class="radio">
                                         <input type="radio" id="checkbox2"  name="delivery_status"  value="0" checked="checked">
                                         <span class="checkmark"></span>
-                                        @lang('messages.delivery')
+                                        {{-- @lang('messages.delivery') --}}
+                                        توصيل 
                                     </label>
                                 </div>
 
@@ -244,7 +246,8 @@
                                     <label class="radio">
                                         <input type="radio" id="checkbox1" name="delivery_status"  value="1" >
                                         <span class="checkmark"></span>
-                                        @lang('messages.branch-del')
+                                        {{-- @lang('messages.branch-del') --}}
+                                        استلام من الفرع
                                     </label>
                                 </div>
 

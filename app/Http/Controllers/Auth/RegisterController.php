@@ -86,10 +86,11 @@ class RegisterController extends Controller
             'active' => '0',
             // 'image' => $data['image'] == null ? null : UploadImage($data['image'], 'image', '/uploads/users'),
         ]);
+        $status = $package == 1 ? 1 : 0;
         $user->subscriptions()->create(
             [
                 'package_id' => $package,
-                'status' =>0,
+                'status' => $status,
                 'end_at' => $end,
             ]);
 

@@ -13,6 +13,7 @@ use App\Package;
 use App\User;
 use App\Size;
 use App\Table;
+use App\Subscription;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
@@ -149,7 +150,7 @@ class HomeController extends Controller
         $table_id = session()->get('table_id');
 
 
-//        dd($user);
+    //    dd($user);
 
         return view('cart', compact('user', 'products', 'totalPrice',
             'cart', 'id', 'resActive', 'table_id',
@@ -478,28 +479,37 @@ class HomeController extends Controller
 
         $user = User::find($id);
 
-        if ($request->coupon != null) {
-            $coupon = Coupon::where('name', $request->coupon)->first();
-            $subscription = $user->subscriptions()->latest()->first();
-            // dd($subscription);
-            $package = $subscription->package;
-            $discount = ($package->price * $coupon->percentage) / 100;
-            $newPrice = $package->price - $discount;
-            $subscription->update([
-                'price' => $newPrice,
-                'discount_code_id' => $coupon->id,
-
-            ]);
-
-
-            if ($request->seller_code != null) {
-                $seller_code = SellerCode::where('name', $request->seller_code)->first();
-                // dd($seller_code);
-                if ($seller_code) {
-                    $subscription->update([
-                        'seller_code_id' => $seller_code->id,
+        if($request->coupon != null){
+            $coupon = Coupon::where('name',$request->coupon)->first();
+            if($coupon){
+                $subscription = $user->subscriptions()->latest()->first();
+                // dd($coupon->id);
+                $package =  $subscription->package;
+                $discount = ($package->price * $coupon->percentage)/100;
+                $newPrice = $package->price - $discount ;
+                // dd($coupon->id , $subscription);
+                $subscription->update([
+                        'price' => $newPrice,
+                        'discount_code_id' => $coupon->id,
                     ]);
-                }
+
+                    if($request->seller_code != null){
+                        $seller_code = SellerCode::where('name',$request->seller_code)->first();
+                        // dd($seller_code);
+                        if($seller_code){
+                            $subscription->update([
+                                'seller_code_id' => $seller_code->id,
+                                ]);
+                        }
+                    }
+
+                flash("سعر الباقة بعد الخصم".$newPrice);
+                //redirect to payment page
+                return  view('payment',compact('subscription'));
+            }else{
+                flash("تاكد من كتابه كود الخصم بشكل صحيح")->error();
+                return back();
+
             }
 
             flash("سعر الباقة بعد الخصم" . $newPrice);
@@ -545,7 +555,57 @@ class HomeController extends Controller
 
     public function lastFun(Request $request, $sub_id)
     {
-        dd($sub_id);
+        // dd($sub_id, $request->all());
+        $rules = [
+            'payment_image'       => 'nullable|mimes:jpeg,bmp,png,jpg|max:5000',
+        ];
+        $validation = $this->validate($request,$rules);
+
+        $subscribe = Subscription::find($sub_id);
+        $user = $subscribe->user;
+        if($request->payment_image != null){
+            $subscribe->update([
+                'image' => UploadImage($request->payment_image, 'subscribtions', 'uploads/subscribtions')
+                ]);
+            return redirect('/home');
+        }
+
+
+        $token = "7Fs7eBv21F5xAocdPvvJ-sCqEyNHq4cygJrQUFvFiWEexBUPs4AkeLQxH4pzsUrY3Rays7GVA6SojFCz2DMLXSJVqk8NG-plK-cZJetwWjgwLPub_9tQQohWLgJ0q2invJ5C5Imt2ket_-JAlBYLLcnqp_WmOfZkBEWuURsBVirpNQecvpedgeCx4VaFae4qWDI_uKRV1829KCBEH84u6LYUxh8W_BYqkzXJYt99OlHTXHegd91PLT-tawBwuIly46nwbAs5Nt7HFOozxkyPp8BW9URlQW1fE4R_40BXzEuVkzK3WAOdpR92IkV94K_rDZCPltGSvWXtqJbnCpUB6iUIn1V-Ki15FAwh_nsfSmt_NQZ3rQuvyQ9B3yLCQ1ZO_MGSYDYVO26dyXbElspKxQwuNRot9hi3FIbXylV3iN40-nCPH4YQzKjo5p_fuaKhvRh7H8oFjRXtPtLQQUIDxk-jMbOp7gXIsdz02DrCfQIihT4evZuWA6YShl6g8fnAqCy8qRBf_eLDnA9w-nBh4Bq53b1kdhnExz0CMyUjQ43UO3uhMkBomJTXbmfAAHP8dZZao6W8a34OktNQmPTbOHXrtxf6DS-oKOu3l79uX_ihbL8ELT40VjIW3MJeZ_-auCPOjpE3Ax4dzUkSDLCljitmzMagH2X8jN8-AYLl46KcfkBV";
+
+        $data = "{\"PaymentMethodId\":\"2\",\"CustomerName\": \"$user->name_ar\",\"DisplayCurrencyIso\": \"SAR\", \"MobileCountryCode\":\"+966\",\"CustomerMobile\": \"$user->phone_number\",
+            \"CustomerEmail\": \"$user->email\",\"InvoiceValue\": $subscribe->price,\"CallBackUrl\": \"http://127.0.0.1:8000/my-fatoora-status\",\"ErrorUrl\": \"https://google.com\",\"Language\": \"ar\",
+            \"CustomerReference\" :\"ref 1\",\"CustomerCivilId\":12345678,\"UserDefinedField\": \"Custom field\",\"ExpireDate\": \"\",\"CustomerAddress\" :{\"Block\":\"\",\"Street\":\"\",\"HouseBuildingNo\":\"\",
+            \"Address\":\"\",\"AddressInstructions\":\"\"},\"InvoiceItems\": [{\"ItemName\": \"طلب السيد .$user->name\",\"Quantity\": 1,\"UnitPrice\": $subscribe->price}]}";
+        $fatooraRes = MyFatoorah($token, $data);
+        $result = json_decode($fatooraRes);
+        // dd();
+
+        if ($result->IsSuccess === true) {
+            $subscribe->update(['invoiced_id' => $result->Data->InvoiceId]);
+            return redirect($result->Data->PaymentURL);
+        } else {
+
+            flash('حدث خطا')->error();
+            return back();
+        }
+    }
+
+    public  function fatooraStatus(){
+        $token = "7Fs7eBv21F5xAocdPvvJ-sCqEyNHq4cygJrQUFvFiWEexBUPs4AkeLQxH4pzsUrY3Rays7GVA6SojFCz2DMLXSJVqk8NG-plK-cZJetwWjgwLPub_9tQQohWLgJ0q2invJ5C5Imt2ket_-JAlBYLLcnqp_WmOfZkBEWuURsBVirpNQecvpedgeCx4VaFae4qWDI_uKRV1829KCBEH84u6LYUxh8W_BYqkzXJYt99OlHTXHegd91PLT-tawBwuIly46nwbAs5Nt7HFOozxkyPp8BW9URlQW1fE4R_40BXzEuVkzK3WAOdpR92IkV94K_rDZCPltGSvWXtqJbnCpUB6iUIn1V-Ki15FAwh_nsfSmt_NQZ3rQuvyQ9B3yLCQ1ZO_MGSYDYVO26dyXbElspKxQwuNRot9hi3FIbXylV3iN40-nCPH4YQzKjo5p_fuaKhvRh7H8oFjRXtPtLQQUIDxk-jMbOp7gXIsdz02DrCfQIihT4evZuWA6YShl6g8fnAqCy8qRBf_eLDnA9w-nBh4Bq53b1kdhnExz0CMyUjQ43UO3uhMkBomJTXbmfAAHP8dZZao6W8a34OktNQmPTbOHXrtxf6DS-oKOu3l79uX_ihbL8ELT40VjIW3MJeZ_-auCPOjpE3Ax4dzUkSDLCljitmzMagH2X8jN8-AYLl46KcfkBV";
+        $PaymentId = \Request::query('paymentId');
+        $resData = MyFatoorahStatus($token, $PaymentId);
+        $result = json_decode($resData);
+        // dd($result);
+        if($result->IsSuccess === true && $result->Data->InvoiceStatus === "Paid"){
+            $InvoiceId = $result->Data->InvoiceId;
+            $order = Subscription::where('invoice_id',$InvoiceId)->first();
+            $order->update(['status'=>1]);
+            return redirect()->to('/fatoora/success');
+        }else{
+            flash('حدث خطا')->error();
+            return redirect()->to('/');
+        }
     }
 
 }
