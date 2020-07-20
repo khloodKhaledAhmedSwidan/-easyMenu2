@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Subscription extends Model
 {
     protected $table = 'subscriptions';
-    protected $fillable = ['package_id', 'user_id', 'seller_code_id', 'discount_code_id ', 'invoice_id', 'price', 'end_at', 'status', 'finished', 'image'];
+    protected $fillable = ['package_id', 'user_id', 'seller_code_id', 'discount_code_id', 'invoice_id', 'price', 'end_at', 'status', 'finished', 'image'];
 
     public function package()
     {

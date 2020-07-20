@@ -126,7 +126,7 @@
                             </td>
                             <td>
                                 @if ($order->invoice_id == null)
-                                تم التحويل تحويل بنكي
+                                تم الدفع تحويل بنكي
 {{--                             <a href="{{route('orders.update-status',$order->id)}}" class="btn btn-sm blue">--}}
 {{--                           <i class="icon-docs"></i> تغيير حالة المدفوعات البنكية</a> --}}
                                 @else

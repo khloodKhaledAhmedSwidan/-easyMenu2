@@ -116,9 +116,8 @@ class CartController extends Controller
     }
 
     public function get_branches($id)
-        {
-            $branches = Branch::whereCity_id($id)->pluck('address_ar' , 'id');
-
-            return $branches;
-}
+    {
+        $branches = User::whereCity_id($id)->pluck('name_ar' , 'id');
+        return $branches;
+    }
 }
