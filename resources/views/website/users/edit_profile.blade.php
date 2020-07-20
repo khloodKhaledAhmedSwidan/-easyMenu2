@@ -14,11 +14,14 @@
     <ul class="page-breadcrumb">
         <li>
                  <i class="fa fa-circle"></i>
-            <a href="{{route('res-update-info') }}">@lang('messages.edit_profile')</a>
-       
+            <a href="{{route('res-update-info') }}">
+                تعديل بياناتى
+{{--                @lang('messages.edit_profile')--}}
+            </a>
+
         </li>
-  
-      
+
+
     </ul>
 </div>
 
@@ -28,18 +31,23 @@
     <div class="col-md-6 margin-auto">
         <a href="{{route('res-update-info')}}"
          class="btn btn-info {{ strpos(URL::current(), 'admin/edit-profile') !== false ? 'hide' : '' }}">
-        @lang('messages.edit_profile')
+            تعديل بياناتى
+{{--        @lang('messages.edit_profile')--}}
         </a>
-       
+
         <a href="{{route('res.changePass')}}"
             class="btn btn-info {{ strpos(URL::current(), 'admin/change-password') !== false ? 'hide' : '' }}">
-           @lang('messages.change_password')
+            تغيير كلمة المرور
+{{--           @lang('messages.change_password')--}}
         </a>
-    
+
     </div>
 </div>
 
-<h1 class="page-title"> @lang('messages.edit_profile') </h1>
+<h1 class="page-title">
+    تعديل بياناتى
+{{--    @lang('messages.edit_profile') --}}
+</h1>
 @include('flash::message')
 @endsection
 
@@ -51,18 +59,19 @@
 
         <!-- BEGIN EXAMPLE TABLE PORTLET-->
 
-          
+
               <div class="col-md-9">
-                
+
 
    {!! Form::model($model, ['action'=>['HomeController@updateProfile'],'method'=>'post', 'enctype'
             => 'multipart/form-data']) !!}
                 <div class="form-group">
-                    @if (app()->getLocale() == 'ar')
+{{--                    @if (app()->getLocale() == 'ar')--}}
                     {{Form::label('name_ar','اسم المطعم')}}
-                    @else
-                    {{Form::label('name_ar','Restaurant Name')}}
-                    @endif
+{{--                    @else--}}
+{{--                    {{Form::label('name_ar','Restaurant Name')}}--}}
+{{--                    @endif--}}
+
                     {{Form::text('name_ar',$model->name_ar,['class'=>'form-control','required'])}}
                     @if ($errors->has('name_ar'))
                     <span class="invalid-feedback" role="alert">
@@ -72,11 +81,11 @@
                 </div>
 
                 <div class="form-group">
-                    @if (app()->getLocale() == 'ar')
+{{--                    @if (app()->getLocale() == 'ar')--}}
                     {{Form::label('name','اسم المطعم بالانجليزية')}}
-                    @else
-                    {{Form::label('name','Restaurant Name in English')}}
-                    @endif
+{{--                    @else--}}
+{{--                    {{Form::label('name','Restaurant Name in English')}}--}}
+{{--                    @endif--}}
                     {{Form::text('name',$model->name,['class'=>'form-control','required'])}}
                     @if ($errors->has('name'))
                     <span class="invalid-feedback" role="alert">
@@ -85,14 +94,14 @@
                     @endif
                 </div>
 
-         
+
 
                 <div class="form-group">
-                    @if (app()->getLocale() == 'ar')
+{{--                    @if (app()->getLocale() == 'ar')--}}
                     {{Form::label('email','ايميل المطعم')}}
-                    @else
-                    {{Form::label('email','Restaurant Email')}}
-                    @endif
+{{--                    @else--}}
+{{--                    {{Form::label('email','Restaurant Email')}}--}}
+{{--                    @endif--}}
                     {{Form::text('email',$model->email,['class'=>'form-control','required'])}}
                     @if ($errors->has('email'))
                     <span class="invalid-feedback" role="alert">
@@ -102,11 +111,11 @@
                 </div>
 
                 <div class="form-group">
-                    @if (app()->getLocale() == 'ar')
+{{--                    @if (app()->getLocale() == 'ar')--}}
                     {{Form::label('phone_number','هاتف المطعم')}}
-                    @else
-                    {{Form::label('phone_number','Restaurant phone')}}
-                    @endif
+{{--                    @else--}}
+{{--                    {{Form::label('phone_number','Restaurant phone')}}--}}
+{{--                    @endif--}}
                     {{Form::text('phone_number',$model->phone_number,['required','class'=>'form-control'])}}
 
                     @if ($errors->has('phone_number'))
@@ -194,13 +203,13 @@
 
 
 
-  
+
        <div class="form-group">
-                @if (app()->getLocale() == 'ar')
+{{--                @if (app()->getLocale() == 'ar')--}}
                 {{Form::label('image','تغيير الصورة الشخصية')}}
-                @else
-                {{Form::label('image','Update Image')}}
-                @endif
+{{--                @else--}}
+{{--                {{Form::label('image','Update Image')}}--}}
+{{--                @endif--}}
                 {!! Form::file('image', ['class'=>'form-control']) !!}
                 @if ($errors->has('image'))
                 <span class="invalid-feedback" role="alert">
@@ -209,17 +218,17 @@
                 @endif
             </div>
                              <div class="form-group">
-                @if (app()->getLocale() == 'ar')
+{{--                @if (app()->getLocale() == 'ar')--}}
                 {!! Form::submit('تعديل', ['class' => 'btn btn-primary']) !!}
-                @else
-                {!! Form::submit('Update', ['class' => 'btn btn-primary']) !!}
-                @endif
+{{--                @else--}}
+{{--                {!! Form::submit('Update', ['class' => 'btn btn-primary']) !!}--}}
+{{--                @endif--}}
             </div>
             {!! Form::close() !!}
                   </div>
-     
+
                    <div class="col-md-3">
-         
+
                       <div class="fileinput fileinput-new" data-provides="fileinput">
                     <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
                 @if($model->image !==null)
@@ -227,10 +236,10 @@
                 @endif
             </div>
                     </div>
-             
-                 </div>     
 
-  
+                 </div>
+
+
         <!-- END EXAMPLE TABLE PORTLET-->
 
 </div>

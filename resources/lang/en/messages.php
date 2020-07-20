@@ -143,7 +143,7 @@ return [
     'Date_of_subscription' => 'Date of subscription',
     'messages' => 'messages',
     'edit_profile' => 'edit profile',
-    'change_passsword'=>'change password',
+    'change_passsword'=>'change  password',
     'change_passswordField'=>'Enter Password',
     'confirm_password' => 'Confirm Password',
     'barcode'=>'barcode',

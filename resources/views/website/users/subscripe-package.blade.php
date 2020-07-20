@@ -20,17 +20,15 @@
             <i class="fa fa-circle"></i>
         </li>
         <li>
-            <a href="/admin/categories">التصنيفات</a>
-            <i class="fa fa-circle"></i>
+            <a href="/admin/categories">الباقات</a>
         </li>
         <li>
-            <span>اضافة جديد</span>
+
         </li>
     </ul>
 </div>
 
-<h1 class="page-title"> التصنيفات
-    <small>اضافة جديد</small>
+<h1 class="page-title">الباقة المشترك فيها
 </h1>
 @endsection
 
@@ -60,32 +58,33 @@
                                             <label class="control-label"> اسم الباقة </label>
                                             <input type="text"  class="form-control"
                                         value="{{$subscription->package->name_ar}}"  />
-                        
+
                                         </div>
 
                                         <div class="form-group">
                                             <label class="control-label"> وصف الباقة</label>
                                             <input type="text"  class="form-control"
                                         value="{{$subscription->package->description_ar}}" />
-                                          
+
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label"> المدة المتبقية</label>
                                             <input type="text" class="form-control"
-                                        value="" />
-                                          
+                                        value="{{$reminder}} اشهر" />
+
+
                                         </div>
-                                      
+
                                         <div class="form-group">
-                                
+
                                         <a class="btn green" href="{{route('change.package',$subscription->package_id)}}">تغيير الباقة</a>
-                                        
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="margiv-top-10">
-                               
+
                             </div>
                         </form>
                     </div>

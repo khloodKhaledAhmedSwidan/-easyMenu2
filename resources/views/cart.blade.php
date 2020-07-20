@@ -175,7 +175,12 @@
                     <span class="Amount__Quantity-gXjznF hLVzDN"> SR {{$priceAfterVat}}</span>
                 </div>
 @if($table_id != null)
-
+                    <div class="Amount__Wrapper-dterOW dEARJd"><span>رقم الطاولة </span>
+                        <span class="Amount__Quantity-gXjznF kWbUqE" id="total">
+                       {{$table_id}}
+                    </span>
+                        {{-- <span  id="total-price"></span> --}}
+                    </div>
                 @else
                     <div class="prependedcheckbox1" id="saturday">
                         <div class="Amount__Wrapper-dterOW dEARJd " ><span> قيمة التوصيل</span>
@@ -183,6 +188,7 @@
                         </div>
                     </div>
      @endif
+
 
                 <div class="Amount__Wrapper-dterOW dEARJd"><span>المجموع </span>
                     <span class="Amount__Quantity-gXjznF kWbUqE" id="total">

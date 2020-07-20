@@ -13,19 +13,27 @@
 <div class="page-bar">
     <ul class="page-breadcrumb">
         <li>
-            <a href="{{ url('admin/edit-profile') }}">@lang('messages.edit_profile')</a>
+            <a href="{{ url('admin/edit-profile') }}">تعديل بياناتى
+{{--                @lang('messages.edit_profile')--}}
+            </a>
             <i class="fa fa-circle"></i>
         </li>
-  
+
         <li>
-            <span>@lang('messages.barcode')</span>
+            <span>
+                استعراض مطعمي
+{{--                @lang('messages.barcode')--}}
+            </span>
         </li>
     </ul>
 </div>
 
 <hr>
 
-<h1 class="page-title">@lang('messages.barcode') </h1>
+<h1 class="page-title">
+    استعراض مطعمي
+{{--    @lang('messages.barcode')--}}
+</h1>
 
 @endsection
 
@@ -44,9 +52,13 @@
                     <br>
                     {{-- <span>{{$model->link}}</span> --}}
                     <a class="btn btn-circle-right" target="_blank" style="text-decoration: none; color: #FF5722;"
-                        href="{{url('restaurants/'.$model->name)}}"> @lang('messages.barcode')</a>
+                        href="{{url('restaurants/'.$model->name)}}">
+                        استعراض مطعمي
+
+{{--                        @lang('messages.barcode')--}}
+                    </a>
                     <br>
-          
+
                     @php
                     $qr_file = QrCode::format('svg')
                     ->size(200)->errorCorrection('H')
@@ -60,7 +72,7 @@
                         {{-- <embed src="{{asset('storage/uploads/qr-code/'.$model->link)}}" type=""> --}}
                         {!! QrCode::size(250)->generate(url('restaurants/'.$model->name)); !!}
                     </div>
-              
+
                 </div>
 
             </div>

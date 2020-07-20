@@ -19,7 +19,8 @@
 {{--                    <span class="selected"></span>--}}
 {{--                </a>--}}
 {{--            </li>--}}
-
+{{--                @php dd(auth()->user()->subscriptions()->where('finished',1)->latest()); @endphp--}}
+@if(auth()->user()->subscriptions()->orderBy('id' , 'desc')->first()->finished != 1)
 
                 <li class="nav-item {{ strpos(URL::current(), '/landpage') !== false ? 'active' : '' }}">
                     <a href="/landpage" class="nav-link ">
@@ -101,7 +102,7 @@
                     </li>
                 </ul> --}}
             </li>
- 
+
 
             <li class="nav-item {{ strpos(URL::current(), '/delivery/orders') !== false ? 'active' : '' }}">
                 <a href="{{route('delivery.order')}}" class="nav-link ">
@@ -117,7 +118,7 @@
                     </li>
                 </ul> --}}
             </li>
- 
+
 
 
 
@@ -201,37 +202,39 @@
                     </li>
                 </ul> --}}
             </li>
-            <li class="nav-item {{ strpos(URL::current(), '/subscripe/package') !== false ? 'active' : '' }}">
-                <a href="{{route('show.packageSubscripe')}}" class="nav-link ">
-                    <i class="icon-settings"></i>
-                    <span class="title">الباقات</span>
-                    <span class="arrow"></span>
-                </a>
-                {{-- <ul class="sub-menu">
-                    <li class="nav-item  ">
-                        <a href="" class="nav-link ">
-                            <span class="title"> كافة الاسليدر الاعلاني</span>
+                    @endif
+
+                    <li class="nav-item {{ strpos(URL::current(), 'admin/sliders') !== false ? 'active' : '' }}">
+                        <a href="{{route('sliders.index')}}" class="nav-link ">
+                            <i class="icon-settings"></i>
+                            <span class="title">سليد الاعلاني</span>
+                            <span class="arrow"></span>
                         </a>
+                        {{-- <ul class="sub-menu">
+                            <li class="nav-item  ">
+                                <a href="" class="nav-link ">
+                                    <span class="title"> كافة الاسليدر الاعلاني</span>
+                                </a>
+                            </li>
+                        </ul> --}}
                     </li>
-                </ul> --}}
-            </li>
             @endif
 
-            <li class="nav-item {{ strpos(URL::current(), 'admin/sliders') !== false ? 'active' : '' }}">
-                <a href="{{route('sliders.index')}}" class="nav-link ">
-                    <i class="icon-settings"></i>
-                    <span class="title">سليد الاعلاني</span>
-                    <span class="arrow"></span>
-                </a>
-                {{-- <ul class="sub-menu">
-                    <li class="nav-item  ">
-                        <a href="" class="nav-link ">
-                            <span class="title"> كافة الاسليدر الاعلاني</span>
-                        </a>
-                    </li>
-                </ul> --}}
-            </li>
 
+                <li class="nav-item {{ strpos(URL::current(), '/subscripe/package') !== false ? 'active' : '' }}">
+                    <a href="{{route('show.packageSubscripe')}}" class="nav-link ">
+                        <i class="icon-settings"></i>
+                        <span class="title">الباقات</span>
+                        <span class="arrow"></span>
+                    </a>
+                    {{-- <ul class="sub-menu">
+                        <li class="nav-item  ">
+                            <a href="" class="nav-link ">
+                                <span class="title"> كافة الاسليدر الاعلاني</span>
+                            </a>
+                        </li>
+                    </ul> --}}
+                </li>
 
 {{--            <li class="nav-item {{ strpos(URL::current(), '/landpage') !== false ? 'active' : '' }}">--}}
 {{--                <a href="/landpage" class="nav-link ">--}}

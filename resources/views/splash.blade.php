@@ -486,7 +486,7 @@
 
                                         <li>المدة:{{$package->duration}}</li>
                                         <li>السعر:{{$package->price}}</li>
-
+<li><a href="{{route('register')}}" class="btn btn-info">الاشتراك</a></li>
 
                                 </ul>
 

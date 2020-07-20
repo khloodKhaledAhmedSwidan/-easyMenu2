@@ -165,7 +165,31 @@ class HomeController extends Controller
 
     public function home()
     {
-        return view('res-landpage');
+        $user = auth()->user();
+        $test = $user->subscriptions()->where('user_id', $user->id)->latest()->first();
+//        dd($test);
+//        dd($test);
+        $nowDate = \Carbon\Carbon::now()->toDateString();
+//        dd($now);
+        if($test['finished'] == 1){
+            return redirect()->route('show.packageSubscripe');
+        }
+        if ($test['finished'] == 0){
+        $endDate = $test['end_at'];
+//        dd($endDate);
+//        $dt1 = Carbon::create($endDate);
+//        $dt2 = Carbon::create($nowDate);
+//        dd($dt2);
+//        $check = $dt1->greaterThan($dt2);
+//
+
+        $check = $endDate->greaterThan($nowDate);
+        if ($check) {
+            return view('res-landpage');
+        } else {
+            $test->update(['finished'=>1]);
+            return redirect()->route('show.packageSubscripe');
+}}
     }
 
     public function splash()
@@ -385,7 +409,7 @@ class HomeController extends Controller
         if ($user->type == 0) {
 
 
-            $orders = Order::where('user_id', $user->id)->where('status', '0')->where('delivery', 0)->where('branch_id',null)->get();
+            $orders = Order::where('user_id', $user->id)->where('status', '0')->where('delivery', 0)->where('branch_id', null)->get();
 //dd($orders);
             return view('delivery-orders', compact('orders'));
 
@@ -417,7 +441,7 @@ class HomeController extends Controller
 //       $branch->where('id',$branch->id)->branchOrders()->update([
 //           'branch_id' => $branch->id,
 //       ]);
-        $order->where('id',$order->id)->update([ 'branch_id' => $branch->id,]);
+        $order->where('id', $order->id)->update(['branch_id' => $branch->id,]);
         flash("تم تحويل الطلب بنجاح");
         return redirect()->back();
 
@@ -438,77 +462,79 @@ class HomeController extends Controller
 //         }
 // }
 
-    public function payBank($user){
+    public function payBank($user)
+    {
         $user = User::find($user);
-        return view('pay-by-bank',compact('user'));
+        return view('pay-by-bank', compact('user'));
     }
 
-    public function payByBank(Request $request,$id){
+    public function payByBank(Request $request, $id)
+    {
         // dd($request->all());
         $this->validate($request, [
-            'coupon'      => 'sometimes',
+            'coupon' => 'sometimes',
             'seller_code' => 'sometimes',
         ]);
 
         $user = User::find($id);
 
-        if($request->coupon != null){
-            $coupon = Coupon::where('name',$request->coupon)->first();
-            if($coupon){
-                $subscription = $user->subscriptions()->latest()->first();
-                // dd($subscription);
-                $package =  $subscription->package;
-                $discount = ($package->price * $coupon->percentage)/100;
-                $newPrice = $package->price - $discount ;
-                $subscription->update([
-                        'price' => $newPrice,
-                        'discount_code_id' => $coupon->id,
+        if ($request->coupon != null) {
+            $coupon = Coupon::where('name', $request->coupon)->first();
+            $subscription = $user->subscriptions()->latest()->first();
+            // dd($subscription);
+            $package = $subscription->package;
+            $discount = ($package->price * $coupon->percentage) / 100;
+            $newPrice = $package->price - $discount;
+            $subscription->update([
+                'price' => $newPrice,
+                'discount_code_id' => $coupon->id,
 
+            ]);
+
+
+            if ($request->seller_code != null) {
+                $seller_code = SellerCode::where('name', $request->seller_code)->first();
+                // dd($seller_code);
+                if ($seller_code) {
+                    $subscription->update([
+                        'seller_code_id' => $seller_code->id,
                     ]);
-
-
-                    if($request->seller_code != null){
-                        $seller_code = SellerCode::where('name',$request->seller_code)->first();
-                        // dd($seller_code);
-                        if($seller_code){
-                            $subscription->update([
-                                'seller_code_id' => $seller_code->id,
-                                ]);
-                        }
-                    }
-
-                flash("سعر الباقة بعد الخصم".$newPrice);
-                //redirect to payment page
-                return  view('payment',compact('subscription'));
-            }else{
-                flash("تاكد من كتابه كود الخصم بشكل صحيح")->error();
-                return back();
+                }
             }
+
+            flash("سعر الباقة بعد الخصم" . $newPrice);
+            //redirect to payment page
+            return view('payment', compact('subscription'));
+
+//            if($coupon){
+//
+//            }else{
+//                flash("تاكد من كتابه كود الخصم بشكل صحيح")->error();
+//                return back();
+//            }
         }
 
 
-
-
-
-
-        $subscription = $user->subscriptions()->where('user_id',$user->id)->latest();
+        $subscription = $user->subscriptions()->where('user_id', $user->id)->latest();
         //$oldPrice = $subscription->price;
-        $package =  Package::where('id',$subscription->package_id)->first();
-        $discount = ($package->price * $coupon->percentage)/100;
-        $newPrice = $package->price - $discount ;
+        $package = Package::where('id', $subscription->package_id)->first();
+        $discount = ($package->price * $coupon->percentage) / 100;
+        $newPrice = $package->price - $discount;
         //dd($newPrice);
-        $user->subscriptions()->where('user_id',$user->id)->update([
+        $user->subscriptions()->where('user_id', $user->id)->update([
             'price' => $newPrice,
             'discount_code_id' => $coupon->id,
         ]);
 
-        flash("سعر الباقة بعد الخصم".$newPrice);
+        flash("سعر الباقة بعد الخصم" . $newPrice);
         //    return redirect()->route('pay.bankPage',$user->id);
-        return  back();
+        return back();
 
 
     }
-    public function showOrderInfo($id){
+
+    public function showOrderInfo($id)
+    {
         // dd($id);
         $order = Order::find($id);
         $order_details = unserialize($order->cart_items);

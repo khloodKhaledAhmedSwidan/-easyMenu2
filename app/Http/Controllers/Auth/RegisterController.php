@@ -76,7 +76,7 @@ class RegisterController extends Controller
         $packageDuration =Package::find($package)->duration;
         $now =Carbon::now('m');
         $end=   $now->addMonths($packageDuration);
-    
+
         $user =  User::create([
             'name' => $data['name'],
             'name_ar' => $data['name_ar'],
@@ -94,8 +94,8 @@ class RegisterController extends Controller
             ]);
 
         return $user;
-        // flash('تم التسجيل بنجاح');
-        // return redirect()->route('pay.bankPage',$user->id);
+//         flash('تم التسجيل بنجاح');
+//         return redirect()->route('pay.bankPage',$user->id);
 
     }
 }
